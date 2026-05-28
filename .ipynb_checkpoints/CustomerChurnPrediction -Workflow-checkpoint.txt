@@ -1,0 +1,70 @@
+📦 1. IMPORT LIBRARIES
+        pandas, numpy, matplotlib, seaborn, sklearn, xgboost
+                    ↓
+📂 2. LOAD DATASET
+        pd.read_csv()
+        check shape, head, info
+                    ↓
+🔧 3. FIX DATA TYPES
+        TotalCharges → string to float
+        pd.to_numeric(errors='coerce')
+                    ↓
+🧹 4. HANDLE MISSING VALUES
+        isnull().sum() → find
+        dropna()       → remove
+                    ↓
+🔍 5. CHECK DUPLICATES
+        duplicated().sum()
+        drop_duplicates() if needed
+                    ↓
+📊 6. EDA (EXPLORATORY DATA ANALYSIS)
+        countplot  → churn distribution
+        histplot   → MonthlyCharges distribution
+        boxplot    → Churn vs MonthlyCharges
+        heatmap    → correlation between columns
+                    ↓
+🗑️ 7. DROP UNNECESSARY COLUMNS
+        customerID → not useful for prediction
+                    ↓
+🔢 8. LABEL ENCODING
+        Yes/No → 1/0
+        Male/Female → 1/0
+        No phone service → 0
+                    ↓
+🔢 9. ONE HOT ENCODING
+        Contract, InternetService, PaymentMethod
+        (3+ genuine categories)
+        drop_first=True
+                    ↓
+⚖️ 10. SCALING
+        only non-binary columns
+        tenure, MonthlyCharges, TotalCharges
+        StandardScaler → mean=0, std=1
+                    ↓
+✂️ 11. TRAIN TEST SPLIT
+        X = features (drop Churn)
+        Y = target (Churn)
+        80% train, 20% test
+        stratify=Y
+                    ↓
+🤖 12. MODEL BUILDING
+        Model 1 → Logistic Regression → Accuracy 80%, Recall 0.57
+        Model 2 → Decision Tree       → Accuracy 71%, Recall 0.47
+        Model 3 → Random Forest       → Accuracy 78%, Recall 0.49
+        Model 4 → XGBoost             → Accuracy 75%, Recall 0.68
+                    ↓
+📈 13. MODEL EVALUATION
+        accuracy_score
+        confusion_matrix
+        classification_report
+                    ↓
+🏆 14. MODEL SELECTION
+        Recall matters more than Accuracy
+        Missing churner = losing customer
+        XGBoost → Recall 0.68 → WINNER ✅
+                    ↓
+🎯 15. FINAL PREDICTION
+        new_customer = X_test.iloc[0].values.reshape(1,-1)
+        xg.predict(new_customer)
+        Actual = No Churn ✅
+        Predicted = No Churn ✅
