@@ -52,7 +52,7 @@ The model takes 5 customer details as input and predicts whether that customer w
 ## Installation
 
 ```bash
-uv add pandas numpy matplotlib seaborn scikit-learn xgboost
+uv sync
 ```
 
 ---
